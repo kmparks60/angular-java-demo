@@ -1,0 +1,33 @@
+<div class="entry-container">
+  <h2>Journal Entry</h2>
+
+  <form (ngSubmit)="submitEntry()">
+    <input
+      type="text"
+      [(ngModel)]="newEntry.title"
+      name="title"
+      placeholder="Title"
+      required
+    />
+
+    <textarea
+      [(ngModel)]="newEntry.content"
+      name="content"
+      placeholder="Write your journal entry..."
+      required
+    ></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <hr />
+
+  <div class="entries" *ngIf="entries.length">
+    <h3>Previous Entries</h3>
+    <div *ngFor="let entry of entries" class="entry-card">
+      <h4>{{ entry.title }}</h4>
+      <p>{{ entry.content }}</p>
+      <small>{{ entry.created_at | date:'short' }}</small>
+    </div>
+  </div>
+</div>
